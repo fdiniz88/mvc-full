@@ -1,6 +1,6 @@
-"# mvc-full" 
+"# mvc-client" 
 
-Desenvolvimento front-end: spring mvc
+Consumo  dos serviços.
+A aplicação spring mvc vai consumir a aplicação spring boot.
 
-Trabalhar nas telas e na criação de serviços.
 
