@@ -1,10 +1,22 @@
 package br.com.appbarmvc.model.negocio;
 
+import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -12,28 +24,38 @@ import javax.persistence.Table;
 @Table(name = "TSobremesa")
 @PrimaryKeyJoinColumn(name = "idProduto")
 public class Sobremesa extends Produto {
-
 	
-	private Date validade;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name = "Validade", nullable = false)
+	private LocalDate validade;
+	@Column(name = "Tamanho", length = 100, nullable = false)
 	private String tamanho;
+	@Column(name = "FeitoHoje", nullable = false)
 	private boolean isFeitoHone;
 	
-	public Sobremesa() {	
+
+	public Sobremesa()	{
+		super();
 	}
+
+	public Sobremesa(LocalDate validade, String tamanho, boolean isFeitoHone) {
+		super();
+		this.setValidade(validade);
+		this.setTamanho(tamanho);
+		this.setFeitoHone(isFeitoHone);
+	}
+
 	
 	/*
-	 * public Sobremesa(Integer id, String nome, Integer quantidade, float preco,
-	 * Date validade, String tamanho, boolean isFeitoHone) { super(id, nome,
-	 * quantidade, preco); this.setNome(nome); this.setQuantidade(quantidade);
-	 * this.setPreco(preco); this.validade = validade; this.tamanho = tamanho;
-	 * this.isFeitoHone = isFeitoHone; }
+	 * public Sobremesa(Integer id, String descricao, Float preco) { super(id,
+	 * descricao, preco); }
 	 */
 	
-	public Date getValidade() {
+	public LocalDate getValidade() {
 		return validade;
 	}
 
-	public void setValidade(Date validade) {
+	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
 
@@ -51,14 +73,13 @@ public class Sobremesa extends Produto {
 
 	public void setFeitoHone(boolean isFeitoHone) {
 		this.isFeitoHone = isFeitoHone;
-	}	
+	}
 
+
+	
 	@Override
 	public String toString() {
-		return "Sobremesa -> nome=" + this.getNome() 
-				+ ", quantidade=" + this.getQuantidade() 
-				+ ", pre�o=" + this.getPreco()
-				+ ", tamanho=" + this.getTamanho() 
+		return "Sobremesa -> tamanho=" + this.getTamanho() 
 				+ ", validade="	+ this.getValidade() 
 				+ ", feito hoje=" + this.isFeitoHone;
 	}

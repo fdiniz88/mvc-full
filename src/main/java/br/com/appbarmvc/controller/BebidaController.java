@@ -17,46 +17,40 @@ public class BebidaController {
 
 	@Autowired
 	private BebidaService service;
-	
-	
+
 	@RequestMapping(value = "/bebida", method = RequestMethod.GET)
 	public String showDetalhe() {
 		return "bebida/detalhe";
 	}
-	
+
 	@RequestMapping(value = "/bebidas", method = RequestMethod.GET)
 	public String obterLista(Model model) {
-		
+
 		model.addAttribute("bebidasLista", service.obterLista());
-		
+
 		return "bebida/lista";
 	}
-	
+
 	@RequestMapping(value = "/bebida", method = RequestMethod.POST)
-	public String incluir(
-			Model model,
-			Bebida bebida
-			) {
-		
+	public String incluir(Model model, Bebida bebida) {
+
 		service.incluir(bebida);
-		
+
 		return this.obterLista(model);
 	}
-	
+
 	@RequestMapping(value = "/bebida/excluir/{id}", method = RequestMethod.GET)
-	public String excluir(
-			Model model, 
-			@PathVariable Integer id
-			) {
-		
+	public String excluir(Model model, @PathVariable Integer id) {
+
 		service.excluir(id);
-		
+
 		return this.obterLista(model);
 	}
 
 	public BebidaService getService() {
 		return service;
 	}
+
 	public void setService(BebidaService service) {
 		this.service = service;
 	}

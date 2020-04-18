@@ -1,5 +1,6 @@
 package br.com.appbarmvc.model.negocio;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,21 +14,16 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "Nome", nullable = false, length = 200)
 	private String nome;
-	private Integer idade;
+	@Column(name = "Idade", nullable = false)
+	private long idade;
+	@Column(name = "Genero", nullable = false, length = 200)
 	private String genero;	
 	
 	public Cliente() {	
 	}
-	
-	public Cliente(Integer id, String nome, Integer idade, String genero) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.idade = idade;
-		this.genero = genero;
-	}
-	
+
 	@Override
 	public String toString() {
 		return "Cliente -> nome=" + this.getNome() + ", idade=" + this.getIdade() + ", g�nero=" + this.getGenero();
@@ -45,10 +41,10 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getIdade() {
+	public long getIdade() {
 		return idade;
 	}
-	public void setIdade(Integer idade) {
+	public void setIdade(long idade) {
 		this.idade = idade;
 	}
 	public String getGenero() {

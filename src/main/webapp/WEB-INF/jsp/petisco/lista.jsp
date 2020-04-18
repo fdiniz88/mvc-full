@@ -19,7 +19,7 @@
    <br>
   <ul class="list-group">
 	<c:forEach var="petisco" items="${petiscosLista}">
-    <li class="list-group-item">${petisco.nome} <a href="/petisco/excluir/${petisco.id}">excluir</a>  </li>
+    <li class="list-group-item">${petisco.tipo} <a href="/petisco/excluir/${petisco.id}">excluir</a>  </li>
     </c:forEach>  
     <ul>
      <br>

@@ -18,7 +18,7 @@
    <br>
   <ul class="list-group">
 	<c:forEach var="sobremesa" items="${sobremesasLista}">
-    <li class="list-group-item">${sobremesa.nome} <a href="/sobremesa/excluir/${sobremesa.id}">excluir</a> </li>
+    <li class="list-group-item">${sobremesa.tamanho} <a href="/sobremesa/excluir/${sobremesa.id}">excluir</a> </li>
     </c:forEach>  
     <ul>
      <br>

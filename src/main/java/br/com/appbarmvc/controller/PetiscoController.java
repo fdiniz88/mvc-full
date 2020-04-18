@@ -36,8 +36,7 @@ public class PetiscoController {
 	public String incluir(
 			Model model,
 			Petisco petisco
-			) {
-		
+			) {		
 		service.incluir(petisco);
 		
 		return this.obterLista(model);

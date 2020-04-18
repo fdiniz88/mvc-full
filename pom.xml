@@ -11,7 +11,7 @@
 	<groupId>br.com</groupId>
 	<artifactId>AppBarMvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AppBarMvs</name>
+	<name>AppBarMvc</name>
 	<description>Projeto de Pedidos de Bar</description>
 
 	<properties>

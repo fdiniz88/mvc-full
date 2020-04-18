@@ -18,7 +18,7 @@
    <br>
   <ul class="list-group">
   <c:forEach var="bebida" items="${bebidasLista}">
-    <li class="list-group-item">${bebida.nome} <a href="/bebida/excluir/${bebida.id}">excluir</a> </li>
+    <li class="list-group-item">${bebida.tipo} <a href="/bebida/excluir/${bebida.id}">excluir</a> </li>
     </c:forEach>  
     <ul>
      <br>

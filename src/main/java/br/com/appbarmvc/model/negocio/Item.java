@@ -13,15 +13,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-
 
 @Entity
-@Table(name = "TItemPedido")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class ItemPedido {
+@Table(name = "TItem")
+//
+public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,16 +32,16 @@ public class ItemPedido {
 	private Pedido pedido;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)//PERSIST
-	@JoinColumn(name = "idProduto")
-	@JsonBackReference
+	@JoinColumn(name = "idProduto")	
 	private Produto produto;
 
-	public ItemPedido() {
+	public Item() {
 	}
 
-	public ItemPedido(String descricao, Pedido pedido) {
+	public Item(String descricao, Produto produto, Pedido pedido) {
 		this();
 		setDescricao(descricao);
+		setProduto(produto);
 		setPedido(pedido);
 	}
 
